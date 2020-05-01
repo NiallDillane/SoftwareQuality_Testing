@@ -103,9 +103,20 @@ Non-functional testing is manifold, with different techniques required for perfo
 \section{Software Testing Process}
 Outline and discuss the key stages in the software testing process
 
-The software testing process can vary depending on the organisation and the software development lifecycle they employ. The latest developments in this space are Agile \footnote{\url{https://agilemanifesto.org/}} and Extreme Programming\footnote{\url{http://www.extremeprogramming.org/}}, which often utilise Test Driven Development in writing tests first, then the code required to pass them (\Citealt{alliance2005tdd}). These tests are added to as the system develops, as well as additional code to satify them, hence the term "continuous integration". 
+The software testing process can vary depending on the organisation and the software development lifecycle they employ. The latest developments in this space are Agile\footnote{\url{https://agilemanifesto.org/}} and Extreme Programming\footnote{\url{http://www.extremeprogramming.org/}}, which often utilise Test Driven Development in writing tests first, then the code required to pass them (\Citealt{alliance2005tdd}). These tests are added to as the system develops, as well as additional code to satify them, hence the term "continuous integration". 
 
+In more traditional software development models, such as the Waterfall model\footnote{\url{https://en.wikipedia.org/wiki/Waterfall_model}} testing is carried out at various stages:
 
+\begin{itemize}
+  \item Requirements are analysed and testable aspects are identified
+  \item Tests are plannned and scripts developed if necessary
+  \item Tests are executed and results logged. Errors are reported to the development team
+  \item Metrics and reports are generated on the state of the software, whether it is ready for release etc.
+  \item Regression testing is carried out to check if defects have been fixed, or if new features pass the tests
+\end{itemize}
+(\Citealt{pan1999software})
+
+Note also that there are different levels of testing, as touched on previously.
 
 \subsection{Unit Testing}
 
