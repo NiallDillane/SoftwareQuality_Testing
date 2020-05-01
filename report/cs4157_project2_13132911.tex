@@ -2,6 +2,7 @@
 
 % Set up data, if you need to add a package, go here
 \input{setup/packages.tex}
+\usepackage{natbib}
 
 \begin{document}
 
@@ -41,7 +42,9 @@ CSIS\par
 \justify
 
 \section*{Abstract}
-Present thesis abstract here, typically there are no references, figures or tables in the abstract.
+
+Testing is an often neglected stage of the software development process, garnering less praise and compensation for its workers. Throughout this paper, we will research and demonstrate the various aspects of testing, as well as its importance in developing high quality systems. 
+
 \pagebreak
 
 
@@ -52,14 +55,32 @@ Present thesis abstract here, typically there are no references, figures or tabl
 
 \section{Introduction}
 
+Software Testing is the investigation of software for the purpose of finding defects and providing feedback on the quality of the product (\Citealt{kaner2006exploratory}). This typically involves running the program --- either manually or automatically with some kind of script --- and providing input with the intent of finding defects (colloquially known as bugs), or rather proving that there are no bugs. Of course, it is impossible to prove that a piece of software is entirely bug free (\Citealt{pan1999software}), at least if it has any degree of complexity, but testing aims to provide a reasonably complete picture of the state of the software and an avenue to reducing defects.
+
+Testing has become more prominent in recent years (\Citealt{tuteja2012research}), but I believe it still does not get the credit it deserves. Testing is a very broad area, which is key at each stage of the software development process: from specification, to implementation, to maintenance. As it consumes 40-50\% of development efforts (\Citealt{tuteja2012research}), it warrants significant consideration and planning from the beginning, so as to minimise costs and time needed later on.
+
 
 
 \section{Dynamic Analysis in Verification and Validation}
 Research and discuss the role and importance of dynamic analysis in the verification and validation of software and the essential part it plays in facilitating quality.
 
+There are two different types of analysis in software testing: those are static and dynamic analysis. 
+
+Static analysis simply involves analysing a piece of software without actually running it (\Citealt{wichmann1995industrial}). This can entail human review of code in a text editor, tools used to provide statistics e.g. lines of code per file, or the use of a compiler. This can be useful in certain circumstances, such as finding security vulnerabilities in a codebase (\Citealt{livshits2006improving}) and is naturally quicker than walking through a program, but generally it is limited from a "user experience" point of view.
+
+Dynamic analysis is based on system execution, often using tools to automate the process (\Citealt{ghahrai2018static}). There are various stages, from individual unit tests of small portions of the system, to integrating these units and the system overall. Dynamic testing provides a more complete picture of the state of the system, and is a more "real life use" approach. This can be time consuming, and so more and more automation is sought out, but one must be wary of the false sense of security these tools can provide.
+
+Verification and Validation are related concepts in software testing. In whole, they describe the process of: identifying if the system has satisfied the specification provided (verification); and determining if that specification is what the customer really wants or needs (validation). In short, verification answers the question: "Are we building the system right?", and validation answers "Are we building the right system?" (\Citealt{boehm1984verifying}). 
+
+Dynamic verification involves, as outlined previously, executing the code. At this point, developers wish to identify if the system has been built to specification, conducting a review of the program in various ways. These can be testing in the small --- checking if inidividual functions perform as expected --- up to testing the system as a whole, by executing modules and checking that they interact as expected. Non-functional requirements (discussed more in Section~\ref{reqs}) may also be tested, such as stress-testing a server to see how many users it can handle.
+
+Dynamic validation is an even higher level of testing (acceptance testing), wherein the development team and external stakeholders walk through the product and use it as a user would. This is black box testing (see Section~\ref{blackwhitebox}), as the testers are performing these actions without looking at the internal workings of the system. A purely surface view.
+
+It's important because.
 
 
-\section{Functional and Non-Functional Requirements}
+
+\section{Functional and Non-Functional Requirements} \label{reqs}
 Clearly outline and define what Functional and Non-Functional Software Requirements are and in your discussion compare and contrast the differences between them
 
 \subsection{How to Test}
@@ -93,7 +114,7 @@ Research and outline the purpose, importance and content of a test plan
 
 
 
-\section{White Box and Black Box Testing}
+\section{White Box and Black Box Testing} \label{blackwhitebox}
 Define and discuss the importance of utilizing both white box and black box testing
 
 
