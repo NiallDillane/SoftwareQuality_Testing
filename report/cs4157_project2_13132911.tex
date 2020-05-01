@@ -1,8 +1,8 @@
 \documentclass[12pt]{article}
+\RequirePackage{setspace}
 
 % Set up data, if you need to add a package, go here
 \input{setup/packages.tex}
-\usepackage{natbib}
 
 \begin{document}
 
@@ -76,20 +76,36 @@ Dynamic verification involves, as outlined previously, executing the code. At th
 
 Dynamic validation is an even higher level of testing (acceptance testing), wherein the development team and external stakeholders walk through the product and use it as a user would. This is black box testing (see Section~\ref{blackwhitebox}), as the testers are performing these actions without looking at the internal workings of the system. A purely surface view.
 
-It's important because.
+In both verification and validation, dynamic analysis is very important, as it provides real-world feedback on the system and any defects found. Runtime execution is very different from compilation, so I believe static analysis alone is not enough in verifying that the system is built correctly. This is even more critical in the case of validation, since it is recommended to have external stakeholders take part in the testing. These may be non-technical people, so simply showing a series of code metrics will likely be insufficient. Much more preferable is having a dynamic experience, acting out pre-defined user stories and ensuring that the customer is satisfied with the experience.
+
+Some have argued in favour of pure static analysis, pointing out that dynamic analysis is unreliable and cannot ensure complete coverage (\Citealt{zhioua2014towards}). However, even here the arguments are generally limited to certain aspects of the software, such as security. 
 
 
 
 \section{Functional and Non-Functional Requirements} \label{reqs}
 Clearly outline and define what Functional and Non-Functional Software Requirements are and in your discussion compare and contrast the differences between them
 
+Functional requirements define behaviour that a system must include, some kind of function that takes input and/or provides output (\Citealt{stellman2005applied}). These are generally found in use cases, e.g. "a user logs in to their profile". These are definite pieces of functionality that the system will fulfill, which may perform calculations, communicate with outher services or utilise data.
+
+Non-functional requirements (NFRs) place constraints on the development of the system and its functionality, and may include: performance, reliability, security, etc, (\Citealt{stellman2005applied}). These are not exactly behaviours that the system must allow, but rather quality attributes which define how the system exhibits these behaviours, e.g. "90\% of pages must load within 1 second".
+
+
+
 \subsection{How to Test}
 Research and discuss how Functional Software Requirements and Non- Functional requirements can be successfully tested and define the differences in approach required by each
+
+Functional testing is a black-box (Section~\ref{blackwhitebox}) approach to testing, wherein functions are passed input and have their output verified for correctness (\Citealt{kaner1999testing}). This is not the same as input testing, where we test a single method of the program, but rather a function of the system which could interact with many different parts. For example, in the case of testing "login" functionality, the input data prepared may be a username and password, while the output expected may be a success message and redirection. These are prepared, the test carried out and then verified, either manually or with an automated tool.
+
+Non-functional testing is manifold, with different techniques required for performance, security, portability, etc. Each of these aspects will have their own methods, and are selected according to the NFRs of the specific system. Within performance, a common NFR is load testing: determining a system's performance and behaviour under normal circumstances as well as peak load (\Citealt{eriksson2019}). Generally, there are tools available for testing these different aspects, but other more abstract NFRs, like usability, may require manual testing and surveying.
 
 
 
 \section{Software Testing Process}
 Outline and discuss the key stages in the software testing process
+
+The software testing process can vary depending on the organisation and the software development lifecycle they employ. The latest developments in this space are Agile \footnote{\url{https://agilemanifesto.org/}} and Extreme Programming\footnote{\url{http://www.extremeprogramming.org/}}, which often utilise Test Driven Development in writing tests first, then the code required to pass them (\Citealt{alliance2005tdd}). These tests are added to as the system develops, as well as additional code to satify them, hence the term "continuous integration". 
+
+
 
 \subsection{Unit Testing}
 
