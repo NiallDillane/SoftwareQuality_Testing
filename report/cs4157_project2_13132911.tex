@@ -43,7 +43,7 @@ CSIS\par
 
 \section*{Abstract}
 
-Testing is an often neglected stage of the software development process, garnering less praise and compensation for its workers. Throughout this paper, we will research and demonstrate the various aspects of testing, as well as its importance in developing high quality systems. 
+Testing is an often neglected piece of the software development process, garnering less praise and compensation for its workers. Throughout this paper, we will research and describe the various aspects of testing, and demonstrate its importance in facilitating the development of high quality software. 
 
 \pagebreak
 
@@ -61,26 +61,6 @@ Testing has become more prominent in recent years (\Citealt{tuteja2012research})
 
 
 
-\section{Dynamic Analysis in Verification and Validation} \label{veri_vali}
-
-There are two different types of analysis in software testing: those are static and dynamic analysis. 
-
-Static analysis simply involves analysing a piece of software without actually running it (\Citealt{wichmann1995industrial}). This can entail human review of code in a text editor, tools used to provide statistics e.g. lines of code per file, or the use of a compiler. This can be useful in certain circumstances, such as finding security vulnerabilities in a codebase (\Citealt{livshits2006improving}) and is naturally quicker than walking through a program, but generally it is limited from a "user experience" point of view.
-
-Dynamic analysis is based on system execution, often using tools to automate the process (\Citealt{ghahrai2018static}). There are various stages, from individual unit tests of small portions of the system, to integrating these units and the system overall. Dynamic testing provides a more complete picture of the state of the system, and is a more "real life use" approach. This can be time consuming, and so more and more automation is sought out, but one must be wary of the false sense of security these tools can provide.
-
-Verification and Validation are related concepts in software testing. In whole, they describe the process of: identifying if the system has satisfied the specification provided (verification); and determining if that specification is what the customer really wants or needs (validation). In short, verification answers the question: "Are we building the system right?", and validation answers "Are we building the right system?" (\Citealt{boehm1984verifying}). 
-
-Dynamic verification involves, as outlined previously, executing the code. At this point, developers wish to identify if the system has been built to specification, conducting a review of the program in various ways. These can be testing in the small --- checking if inidividual functions perform as expected --- up to testing the system as a whole, by executing modules and checking that they interact as expected. Non-functional requirements (discussed more in Section~\ref{reqs}) may also be tested, such as stress-testing a server to see how many users it can handle.
-
-Dynamic validation is an even higher level of testing (acceptance testing), wherein the development team and external stakeholders walk through the product and use it as a user would. This is black box testing (see Section~\ref{blackwhitebox}), as the testers are performing these actions without looking at the internal workings of the system. A purely surface view.
-
-In both verification and validation, dynamic analysis is very important, as it provides real-world feedback on the system and any defects found. Runtime execution is very different from compilation, so I believe static analysis alone is not enough in verifying that the system is built correctly. This is even more critical in the case of validation, since it is recommended to have external stakeholders take part in the testing. These may be non-technical people, so simply showing a series of code metrics will likely be insufficient. Much more preferable is having a dynamic experience, acting out pre-defined user stories and ensuring that the customer is satisfied with the experience.
-
-Some have argued in favour of pure static analysis, pointing out that dynamic analysis is unreliable and cannot ensure complete coverage (\Citealt{zhioua2014towards}). However, even here the arguments are generally limited to certain aspects of the software, such as security. 
-
-
-
 \section{Functional and Non-Functional Requirements} \label{reqs}
 
 Functional requirements define behaviour that a system must include, some kind of function that takes input and/or provides output (\Citealt{stellman2005applied}). These are generally found in use cases, e.g. "a user logs in to their profile". These are definite pieces of functionality that the system will fulfil, which may perform calculations, communicate with other services or utilise data.
@@ -91,9 +71,43 @@ Non-functional requirements (NFRs) place constraints on the development of the s
 
 \subsection{How to Test}
 
-Functional testing is a black-box (Section~\ref{blackwhitebox}) approach to testing, wherein functions are passed input and have their output verified for correctness (\Citealt{kaner1999testing}). This is not the same as input testing, where we test a single method of the program, but rather a function of the system which could interact with many different parts. For example, in the case of testing "login" functionality, the input data prepared may be a username and password, while the output expected may be a success message and redirection. These are prepared, the test carried out and then verified, either manually or with an automated tool.
+Functional testing is a black-box (Section~\ref{blackwhitebox}) approach to testing, wherein functions are passed input and have their output verified for correctness (\Citealt{kaner1999testing}). This is not the same as unit testing, where we test a single method of the program, but rather a function of the system which could interact with many different parts. For example, in the case of testing "login" functionality, the input data prepared may be a username and password, while the output expected may be a success message and redirection. These are prepared, the test carried out and then verified, either manually or with an automated tool.
 
 Non-functional testing is manifold, with different techniques required for performance, security, portability, etc. Each of these aspects will have their own methods, and are selected according to the NFRs of the specific system. Within performance, a common NFR is load testing: determining a system's performance and behaviour under normal circumstances as well as peak load (\Citealt{eriksson2019}). Generally, there are tools available for testing these different aspects, but other more abstract NFRs, like usability, may require manual testing and surveying.
+
+
+
+\section{Dynamic Analysis in Verification and Validation} \label{veri_vali}
+
+There are two different types of analysis in software testing: those are static and dynamic analysis. 
+
+Static analysis simply involves analysing a piece of software without actually running it (\Citealt{wichmann1995industrial}). This can entail human review of code in a text editor, tools used to provide statistics e.g. lines of code per file, or the use of a compiler. This can be useful in certain circumstances, such as finding security vulnerabilities in a codebase (\Citealt{livshits2006improving}) and is naturally quicker than walking through a program, but generally it is limited from a "user experience" point of view.
+
+Dynamic analysis is based on system execution, often using tools to automate the process (\Citealt{ghahrai2018static}). There are various stages, from individual unit tests of small portions of the system, to integrating these units and the system overall. Dynamic testing provides a more complete picture of the state of the system, and is a more "real life use" approach. This can be time consuming, and so more and more automation is sought out, but one must be wary of the false sense of security these tools can provide.
+
+Verification and Validation are related concepts in software testing. In whole, they describe the process of: identifying if the system has satisfied the specification provided (verification); and determining if that specification is what the customer really wants or needs (validation). In short, verification answers the question: "Are we building the system right?", and validation answers "Are we building the right system?" (\Citealt{boehm1984verifying}). 
+
+Dynamic verification involves, as outlined previously, executing the code. At this point, developers wish to identify if the system has been built to specification, conducting a review of the program in various ways. These can be testing in the small --- checking if individual functions perform as expected --- up to testing the system as a whole, by executing modules and checking that they interact as expected. Non-functional requirements (discussed more in Section~\ref{reqs}) may also be tested, such as stress-testing a server to see how many users it can handle.
+
+Dynamic validation is an even higher level of testing (acceptance testing), wherein the development team and external stakeholders walk through the product and use it as a user would. This is black box testing (see Section~\ref{blackwhitebox}), as the testers are performing these actions without looking at the internal workings of the system. A purely surface view.
+
+In both verification and validation, dynamic analysis is very important, as it provides real-world feedback on the system and any defects found. Runtime execution is very different from compilation, so I believe static analysis alone is not enough in verifying that the system is built correctly. This is even more critical in the case of validation, since it is recommended to have external stakeholders take part in the testing. These may be non-technical people, so simply showing a series of code metrics will likely be insufficient. Much more preferable is having a dynamic experience, acting out pre-defined user stories and ensuring that the customer is satisfied with the experience.
+
+Some have argued in favour of pure static analysis, pointing out that dynamic analysis is unreliable and cannot ensure complete coverage (\Citealt{zhioua2014towards}). However, even here the arguments are generally limited to certain aspects of the software, such as security. 
+
+
+
+\section{White Box and Black Box Testing} \label{blackwhitebox}
+
+Software testing techniques are typically broken down into two categories: black box and white box testing. These describe different approaches and levels of depth to the testing process, although they can sometimes cross over and be utilised at the same level of a system.
+
+White box testing (also known as structural testing, or perhaps more aptly, glass box testing) is a technique in which test cases are designed with knowledge of the underlying source code, often the developer themself (\Citealt{nidhra2012black}). This is concerned with the inner workings of the code, with tests typically devised for very small portions (see Section~\ref{unit_testing}), with input and expected output, although it is sometimes used at the Integration and System levels.
+
+Useful for examining the syntactic correctness of code, white box testing is most useful for verification of the code, rather than validation (see Section~\ref{veri_vali}). That is, while it can provide wide coverage and confidence that the system is performing according to the relevant requirement, it does not guarantee that the specification is correct, nor that all the requirements have been implemented.
+
+Black box testing, meanwhile, does not require any knowledge of the program and is typically carried out by a tester separate from the development team (\Citealt{limaye2009software}). The tester is only aware of the input and output, based on the requirements and with no concern for how the program works internally. This can be carried out at any level of testing, but is essential in Acceptance testing, where the system is validated to make sure that it fits customer needs. 
+
+These two classifications often correspond, and to fully test a system we must ensure that both are utilised (\Citealt{nidhra2012black}). White box testing is perhaps more useful at the Unit level, as part of Test Driven Development and automated to provide sanity checks on the code. However, it is not much use developing perfectly functioning code if it does not perform the actions outlined in the specification or that the customer desires. For this, more manual, black box testing is essential.
 
 
 
@@ -172,21 +186,8 @@ The test plan is derived from the product description, requirements and test cas
 
 Test plans are comprehensive, and include: test items, what will and won't be tested, techniques for testing, tasks part of the testing, pass/fail/suspension criteria, test environment and staff needs, deliverables and responsibilities, and finally the schedule. 
 
-These are all relatively intuitive concepts, but ensuring that all of this information is gathered in an organised way, documented from beginning to end, reduces the risk of missing a certain feature or confusion with deadlines and requirements. In short, this keeps all members of the development team on the same page, allowing for traceability of testing requirements as wel as the functional and non-functional requirements they tackle.
+These are all relatively intuitive concepts, but ensuring that all of this information is gathered in an organised way, documented from beginning to end, reduces the risk of missing a certain feature or confusion with deadlines and requirements. In short, this keeps all members of the development team on the same page, allowing for traceability of testing requirements as well as the functional and non-functional requirements they tackle.
 
-
-
-\section{White Box and Black Box Testing} \label{blackwhitebox}
-
-Software testing techniques are typically broken down into two categories: black box and white box testing. These describe different approaches and levels of depth to the testing process, although they can sometimes cross over and be utilised at the same level of a system.
-
-White box testing (also known as structural testing, or perhaps more aptly, glass box testing) is a technique in which test cases are designed with knowledge of the underlying source code, often the developer themself (\Citealt{nidhra2012black}). This is concerned with the inner workings of the code, with tests typically devised for very small portions (See Section~\ref{unit_testing}), with input and expected output, although it is sometimes used at the Integration and System levels.
-
-Useful for examining the syntactic correctness of code, white box testing is most useful for verification of the code, rather than validation (see Section~\ref{veri_vali}). That is, while it can provide wide coverage and confidence that the system is performing according to the relevant requirement, it does not guarantee that the specification is correct, nor that all the requirements have been implemented.
-
-Black box testing, meanwhile, does not require any knowledge of the program and is typically carried out by a tester separate from the development team (\Citealt{limaye2009software}). The tester is only aware of the input and output, based on the requirements and with no concern for how the program works internally. This can be carried out at any level of testing, but is essential in Acceptance testing, where the system is validated to make sure that it fits customer needs. 
-
-These two classifications often correspond, and to fully test a system we must ensure that both are utilised (\Citealt{nidhra2012black}). White box testing is perhaps more useful at the Unit level, as part of Test Driven Development and automated to provide sanity checks on the code. However, it is not much use developing perfectly functioning code if it does not perform the actions outlined in the specification or that the customer desires. For this, more manual, black box testing is essential.
 
 
 
