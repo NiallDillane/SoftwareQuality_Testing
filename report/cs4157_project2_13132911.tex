@@ -61,8 +61,7 @@ Testing has become more prominent in recent years (\Citealt{tuteja2012research})
 
 
 
-\section{Dynamic Analysis in Verification and Validation}
-Research and discuss the role and importance of dynamic analysis in the verification and validation of software and the essential part it plays in facilitating quality.
+\section{Dynamic Analysis in Verification and Validation} \label{veri_vali}
 
 There are two different types of analysis in software testing: those are static and dynamic analysis. 
 
@@ -83,16 +82,14 @@ Some have argued in favour of pure static analysis, pointing out that dynamic an
 
 
 \section{Functional and Non-Functional Requirements} \label{reqs}
-Clearly outline and define what Functional and Non-Functional Software Requirements are and in your discussion compare and contrast the differences between them
 
-Functional requirements define behaviour that a system must include, some kind of function that takes input and/or provides output (\Citealt{stellman2005applied}). These are generally found in use cases, e.g. "a user logs in to their profile". These are definite pieces of functionality that the system will fulfill, which may perform calculations, communicate with outher services or utilise data.
+Functional requirements define behaviour that a system must include, some kind of function that takes input and/or provides output (\Citealt{stellman2005applied}). These are generally found in use cases, e.g. "a user logs in to their profile". These are definite pieces of functionality that the system will fulfil, which may perform calculations, communicate with other services or utilise data.
 
 Non-functional requirements (NFRs) place constraints on the development of the system and its functionality, and may include: performance, reliability, security, etc, (\Citealt{stellman2005applied}). These are not exactly behaviours that the system must allow, but rather quality attributes which define how the system exhibits these behaviours, e.g. "90\% of pages must load within 1 second".
 
 
 
 \subsection{How to Test}
-Research and discuss how Functional Software Requirements and Non- Functional requirements can be successfully tested and define the differences in approach required by each
 
 Functional testing is a black-box (Section~\ref{blackwhitebox}) approach to testing, wherein functions are passed input and have their output verified for correctness (\Citealt{kaner1999testing}). This is not the same as input testing, where we test a single method of the program, but rather a function of the system which could interact with many different parts. For example, in the case of testing "login" functionality, the input data prepared may be a username and password, while the output expected may be a success message and redirection. These are prepared, the test carried out and then verified, either manually or with an automated tool.
 
@@ -101,15 +98,14 @@ Non-functional testing is manifold, with different techniques required for perfo
 
 
 \section{Software Testing Process}
-Outline and discuss the key stages in the software testing process
 
-The software testing process can vary depending on the organisation and the software development lifecycle they employ. The latest developments in this space are Agile\footnote{\url{https://agilemanifesto.org/}} and Extreme Programming\footnote{\url{http://www.extremeprogramming.org/}}, which often utilise Test Driven Development in writing tests first, then the code required to pass them (\Citealt{alliance2005tdd}). These tests are added to as the system develops, as well as additional code to satify them, hence the term "continuous integration". 
+The software testing process can vary depending on the organisation and the software development lifecycle they employ. The latest developments in this space are Agile\footnote{\url{https://agilemanifesto.org/}} and Extreme Programming\footnote{\url{http://www.extremeprogramming.org/}}, which often utilise Test Driven Development in writing tests first, then the code required to pass them (\Citealt{alliance2005tdd}). These tests are added to as the system develops, as well as additional code to satisfy them, hence the term "continuous integration". 
 
 In more traditional software development models, such as the Waterfall model\footnote{\url{https://en.wikipedia.org/wiki/Waterfall_model}} testing is carried out at various stages:
 
 \begin{itemize}
   \item Requirements are analysed and testable aspects are identified
-  \item Tests are plannned and scripts developed if necessary
+  \item Tests are planned and scripts developed if necessary
   \item Tests are executed and results logged. Errors are reported to the development team
   \item Metrics and reports are generated on the state of the software, whether it is ready for release etc.
   \item Regression testing is carried out to check if defects have been fixed, or if new features pass the tests
@@ -118,60 +114,89 @@ In more traditional software development models, such as the Waterfall model\foo
 
 Note also that there are different levels of testing, as touched on previously.
 
-\subsection{Unit Testing}
+
+\subsection{Unit Testing} \label{unit_testing}
+
+Unit testing is the lowest level of testing, taking the smallest testable piece of an application which can be run. This is usually a single function (method), which is passed input and an associated expected output, or possibly an entire program (\Citealt{pearson2020}). A white box approach (see Section~\ref{blackwhitebox}) is taken, wherein the tester can see the inner workings of the code as it executes. The idea is that by testing each individual portion separately, tests are easier to write, provide more complete coverage, and ensure that every portion will work together.
+
 
 \subsection{Integration Testing}
 
+However, simply because units have been tested individually does not guarantee smooth interoperation. Integration testing combines units within one of the programs, or a collection of units, to discover if there are interface defects between them (\Citealt{pearson2020}). This can also test the efficiency of the relationships, for example, if there is perhaps something slowing down or interrupting communication. Ultimately, it is no use if units work separately but not together.
+
+
 \subsection{Regression Testing}
+
+Regression testing is performed when changes have been made to the system, either to fix a bug identified during previous levels of testing, or to add additional functionality. This involves re-running all tests to make sure that the change has not broken the area affected or anything it communicates with (\Citealt{basu2015software}). It is typical for bug-fixing to create other bugs elsewhere in the system, so being able to double check is vital.
+
 
 \subsection{System Testing}
 
+Here, the complete application is tested, verifying (see Section~\ref{veri_vali}) that the system has satisfied the specification and all requirements (\Citealt{pearson2020}). This is typically done in a black-box fashion, by external testers who were not part of development and are not concerned with the inner workings. This is to mimic more of a customer experience.
+
+
 \subsection{Acceptance Testing}
 
+In contrast to System testing, Acceptance testing is done for the purpose of validating (see Section~\ref{veri_vali}) the system, determining if it does the right things. These tests are typically written by the customer and represent their interests, assuring them that the system performs correctly (\Citealt{davis1985technology}). This is entirely black-box, with less formal documentation, for example: "When I press delete on a friend in my contacts, they should disappear from the list".
 
 
-\section{Effective Test Strategy}
-Research and define the principles of an effective test strategy.
 
-\subsection{Documented Test Procedures}
-Consider and discuss the role and importance of having documented test procedures in place to facilitate effective testing
+\section{Test Strategy} \label{test_strategy}
 
-\subsection{Test Plan}
-Research and outline the purpose, importance and content of a test plan
+A Test Strategy is a plan which defines the approach to the testing lifecycle of a piece of software (\Citealt{guru99}). This defines coverage and scope, as well as providing testers with a clear overall picture at all times. This is used in the hope of minimising the possibility of missing any test activity. Essentially, it is a guideline to achieve test objectives set out in the Test Plan (see Section~\ref{testplan}).
+
+Key principles of an effective test strategy are:
+
+\begin{itemize}
+  \item Scope: The testing activities to be carried out, with their timelines, as well as responsibility for approving this test strategy.
+  \item Test Approach: The levels of testing (e.g. Unit, Integration) and types (e.g. load testing for NFRs), along with the roles and responsibilities of each team member.
+  \item Test Environment: Reflecting who will use the system, identify what the requirements are, e.g. Windows 10 operating system.
+  \item Testing Tools: Which tools will be used, whether open source or if certain licenses are required for commercial tools. Potential for automation is also identified at this stage.
+  \item Release Control: Management of version history and ensuring that tests are executed after all modifications, before release.
+  \item Risk Analysis: Identify, create a plan to mitigate, and provide contingencies for all risks possible.
+  \item Review: This document should be approved by all stakeholders on the development side, and changes noted.
+\end{itemize}
+(\Citealt{guru99})
+
+
+\subsection{Test Procedures}
+
+Test procedures are formal specifications of test cases to be applied to one or more pieces of a program (\Citealt{panzl1976test}), facilitating rigorous coverage of the system by ensuring that individual portions of the system are tested in isolation. Similar to Unit Testing (see Section~\ref{unit_testing}), these are self-contained and often automated, run with each iteration of the code. 
+
+Naturally, by having extensive and well-documented test procedures in place, this can lead to massive time savings over the course of developing a piece of software. Rather than manually stepping through code every time is change is made, trying to remember what needs testing, test procedures can be drawn on either to manually check off, or even automated to run in the background. Testing can consume a significant portion of development time and resources with hiring relevant personnel, but this can be mitigated by the use of documented test procedures.
+
+
+\subsection{Test Plan} \label{testplan}
+
+The test plan is derived from the product description, requirements and test cases. It describes what to test, how to test it, who will perform the test and when (\Citealt{ghahrai2019}). This is part of the Test Strategy (Section~\ref{test_strategy}), and is vital in coordinating test activities.
+
+Test plans are comprehensive, and include: test items, what will and won't be tested, techniques for testing, tasks part of the testing, pass/fail/suspension criteria, test environment and staff needs, deliverables and responsibilities, and finally the schedule. 
+
+These are all relatively intuitive concepts, but ensuring that all of this information is gathered in an organised way, documented from beginning to end, reduces the risk of missing a certain feature or confusion with deadlines and requirements. In short, this keeps all members of the development team on the same page, allowing for traceability of testing requirements as wel as the functional and non-functional requirements they tackle.
 
 
 
 \section{White Box and Black Box Testing} \label{blackwhitebox}
-Define and discuss the importance of utilizing both white box and black box testing
+
+Software testing techniques are typically broken down into two categories: black box and white box testing. These describe different approaches and levels of depth to the testing process, although they can sometimes cross over and be utilised at the same level of a system.
+
+White box testing (also known as structural testing, or perhaps more aptly, glass box testing) is a technique in which test cases are designed with knowledge of the underlying source code, often the developer themself (\Citealt{nidhra2012black}). This is concerned with the inner workings of the code, with tests typically devised for very small portions (See Section~\ref{unit_testing}), with input and expected output, although it is sometimes used at the Integration and System levels.
+
+Useful for examining the syntactic correctness of code, white box testing is most useful for verification of the code, rather than validation (see Section~\ref{veri_vali}). That is, while it can provide wide coverage and confidence that the system is performing according to the relevant requirement, it does not guarantee that the specification is correct, nor that all the requirements have been implemented.
+
+Black box testing, meanwhile, does not require any knowledge of the program and is typically carried out by a tester separate from the development team (\Citealt{limaye2009software}). The tester is only aware of the input and output, based on the requirements and with no concern for how the program works internally. This can be carried out at any level of testing, but is essential in Acceptance testing, where the system is validated to make sure that it fits customer needs. 
+
+These two classifications often correspond, and to fully test a system we must ensure that both are utilised (\Citealt{nidhra2012black}). White box testing is perhaps more useful at the Unit level, as part of Test Driven Development and automated to provide sanity checks on the code. However, it is not much use developing perfectly functioning code if it does not perform the actions outlined in the specification or that the customer desires. For this, more manual, black box testing is essential.
 
 
 
-\pagebreak
-\section{Sample Table}
-\begin{table}[ht!]
-\centering
-    
-	\caption{Comparison \textit{p} values}
-	\begin{tabular}{ |l|c|c|}	
-		\hline		
-		\textbf{Attribute} & \textbf{\textit{p-value}} & \textbf{Significant} \\ \hline
-		Model A	 & 0.0521 & N \\ \hline
-		Model B  & 0.6171 & N \\ \hline 
-		Model C  & <0.00001 & Y \\ \hline 
-	\end{tabular}
-	\label{tab:pvalues}
-\end{table} 
+\section{Conclusion}
 
+Throughout this paper, I aimed to research and outline the various aspects of testing, in order to provide a complete picture and walkthrough of the process. By doing so, we wished to demonstrate the importance of the role played by testing in developing quality software. This is naturally a goal of every software company, but testing too often receives little attention or documentation, in favour of rapid development.
 
-\subsubsection{Sample Figure}
-\begin{figure}[ht!]
- 	\centering
- 	\caption{Perceptron (Artificial Neural Network)}
- 	\includegraphics[width=0.7\linewidth]{images/ANN.jpg}
- 	\label{lab:perceptron}
- \end{figure}
-\pagebreak
+While this is understandable in the short-term, I believe I have made the case for the value of investing early in testing, with the long-term benefits it brings. One must consider the techniques most suitable for their product and at which levels of testing they should be utilised, and create comprehensive documentation to ensure traceability of tests with their associated requirements. This documentation also enables much easier and safer automation, something which is appealing from time and cost saving perspectives, but can be dangerous in proving a false sense of security if planned improperly.
 
+I believe that any company with long-term ambitions should place a strong emphasis on testing from an early stage, if they wish to produce quality software.
 
 
 
